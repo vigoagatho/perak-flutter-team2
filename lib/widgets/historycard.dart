@@ -17,7 +17,7 @@ class HistoryCard extends StatelessWidget {
           children: [
             InkWell(
               onTap: () {
-                // Aksi saat gambar diklik
+                
               },
               child: Container(
                 width: 140,
