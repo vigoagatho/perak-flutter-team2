@@ -8,7 +8,7 @@ class AnimePage extends StatelessWidget {
     final List<String> gambar = [
       'https://asset-2.tstatic.net/kaltim/foto/bank/images/haikyuu-to-the-top.jpg',
       'https://media.hitekno.com/thumbs/2022/07/29/19456-bleach/730x480-img-19456-bleach.jpg',
-      'https://media.sukabumiupdate.com/media/2023/04/06/1680772425_642e8d490becb_YeQQqt5wjGNDyJWKHiIU.webp',
+      'https://wallpapers.com/images/hd/kimetsu-no-yaiba-pictures-ekypmhesa3ghjw9r.jpg',
       'https://i0.wp.com/anitrendz.net/news/wp-content/uploads/2021/08/Blue-Lock-TV-Anime.jpg'
     ];
     final List<String> judul = [
@@ -18,10 +18,10 @@ class AnimePage extends StatelessWidget {
       'Blue Lock'
     ];
     final List<String> gambar2 = [
-      'https://www.animationxpress.com/wp-content/uploads/2022/08/one-punch-man.jpg',
+      'https://images6.fanpop.com/image/photos/40600000/OPM-Wallpaper-one-punch-man-40613919-1680-1050.jpg',
       'https://i0.wp.com/anitrendz.net/news/wp-content/uploads/2021/08/Blue-Lock-TV-Anime.jpg',
       'https://www.thestreambible.com/wp-content/uploads/2022/09/dragon-ball-Z-768x395.jpg',
-      'https://animecollective.com/wp-content/uploads/2020/09/hunter-x-hunter-arcs-ranked-1536x1024.jpg.webp'
+      'https://media.hitekno.com/thumbs/2022/10/14/78201-hunter-x-hunter/730x480-img-78201-hunter-x-hunter.jpg'
     ];
     final List<String> judul2 = [
       'One Punch Man',
@@ -47,7 +47,7 @@ class AnimePage extends StatelessWidget {
                         image: DecorationImage(
                             fit: BoxFit.fill,
                             image: NetworkImage(
-                                'https://dorangadget.com/wp-content/uploads/2023/05/Karakter-One-Piece-63.jpg'))),
+                                'https://m.media-amazon.com/images/I/71jt8+W2XHL.jpg'))),
                     child: Stack(
                       children: [
                         Align(
@@ -107,7 +107,7 @@ class AnimePage extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(8),
                                   image: DecorationImage(
                                       image: NetworkImage(
-                                          'https://cdn.antaranews.com/cache/1200x800/2022/08/22/jjk.jpg'),
+                                          'https://www.xtrafondos.com/wallpapers/personajes-de-jujutsu-kaisen-7994.jpg'),
                                       fit: BoxFit.fitWidth)),
                             ),
                           ),

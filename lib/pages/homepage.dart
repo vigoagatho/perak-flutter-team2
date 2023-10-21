@@ -1,5 +1,5 @@
-import 'package:aninext/animepage.dart';
-import 'package:aninext/foryoupage.dart';
+import 'package:aninext/pages/animepage.dart';
+import 'package:aninext/pages/foryoupage.dart';
 import 'package:flutter/material.dart';
 
 class Homepage extends StatefulWidget {
@@ -44,21 +44,6 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
             )
           )
         ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: Colors.redAccent,
-        unselectedItemColor: Colors.grey,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'home'),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'search'),
-          BottomNavigationBarItem(icon: Icon(Icons.add), label: 'upload'),
-          BottomNavigationBarItem(icon: Icon(Icons.download), label: 'download'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'profile'),
-        ]
       ),
     );
   }
