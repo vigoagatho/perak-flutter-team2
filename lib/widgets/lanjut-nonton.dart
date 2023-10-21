@@ -13,7 +13,7 @@ class LanjutNonton extends StatelessWidget {
     var episode = animeList.episode;
     var persen = animeList.persen;
     return Container(
-        height: 150,
+        height: 180,
         child: ListView.builder(
           itemCount: judul.length,
           scrollDirection: Axis.horizontal,
@@ -44,11 +44,11 @@ class LanjutNonton extends StatelessWidget {
                   ),
                   Text(
                     'Terakhir ditonton: EPS ${episode[index]}',
-                    style: TextStyle(fontSize: 12),
+                    style: TextStyle(fontSize: 10),
                   ),
                   Text(
                     persen[index],
-                    style: TextStyle(fontSize: 12),
+                    style: TextStyle(fontSize: 10),
                   ),
                 ],
               ),

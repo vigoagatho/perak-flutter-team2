@@ -6,6 +6,10 @@ class SedangTren extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final lebarLayar = MediaQuery.of(context).size.width;
+    final halfScreen = lebarLayar / 2;
+    final tinggiDikit = ((lebarLayar/3) * 4)/5;
+
     AnimeList animeList = AnimeList();
     var gambar = animeList.gambartren;
     var judul = animeList.judultren;
@@ -24,6 +28,7 @@ class SedangTren extends StatelessWidget {
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2, mainAxisExtent: 130),
           itemCount: judul.length,
+          physics: NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) {
             return Container(
                 margin: EdgeInsets.only(
@@ -35,13 +40,13 @@ class SedangTren extends StatelessWidget {
                     children: [
                       InkWell(
                         child: Container(
-                          height: 92.63,
-                          width: 160,
+                          height: tinggiDikit,
+                          width: halfScreen,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8),
                               image: DecorationImage(
                                   image: NetworkImage(gambar[index]),
-                                  fit: BoxFit.fill)),
+                                  fit: BoxFit.cover)),
                         ),
                       ),
                       Text(

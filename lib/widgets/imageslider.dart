@@ -31,11 +31,11 @@ class _ImageSliderState extends State<ImageSlider> {
                 Image.network(
                   image,
                   fit: BoxFit.cover,
-                  height: 200.0, // Sesuaikan dengan kebutuhan
+                  width: MediaQuery.of(context).size.width,
                 ),
                 Container(
                   color: Colors.black
-                      .withOpacity(0.4), // Warna latar belakang teks
+                      .withOpacity(0.4), 
                   width: double.infinity,
                   padding: EdgeInsets.all(8),
                   child: Text(
@@ -84,7 +84,7 @@ class _ImageSliderState extends State<ImageSlider> {
                   color: _currentIndex == index
                       ? Colors.blue
                       : Colors
-                          .grey, // Sesuaikan dengan warna yang Anda inginkan
+                          .grey,
                 ),
               ),
             );

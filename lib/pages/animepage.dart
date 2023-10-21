@@ -21,7 +21,8 @@ class HalamanListAnime extends StatelessWidget {
         ),
         LanjutNonton(),
         SedangTren(),
-        Rekomendasi()
+        Rekomendasi(),
+        SizedBox(height: 30)
       ],
     ));
   }

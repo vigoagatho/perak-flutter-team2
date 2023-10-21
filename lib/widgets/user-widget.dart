@@ -16,7 +16,6 @@ class UserWidget extends StatelessWidget {
 
     return ListView.builder(
         itemCount: gambar.length,
-        scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return Container(
             height: 280,
