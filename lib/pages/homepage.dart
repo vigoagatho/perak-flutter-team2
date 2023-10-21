@@ -21,28 +21,31 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
           ),
           Container(
             child: TabBar(
-              controller: tabController,
-              isScrollable: true,
-              indicatorColor:Colors.redAccent ,
+                controller: tabController,
+                isScrollable: true,
+                indicatorColor: Colors.redAccent,
                 tabs: [
                   Tab(
                     child: Container(
-                      child: Text('Untuk Anda', 
-                      style: TextStyle(color: Colors.black, fontSize: 15),),),),
-                  Tab(child: Container(
-                    child: Text('Anime', 
-                    style: TextStyle(color: Colors.black, fontSize: 15),),))]
+                      child: Text(
+                        'Untuk Anda',
+                        style: TextStyle(color: Colors.black, fontSize: 15),
+                      ),
                     ),
+                  ),
+                  Tab(
+                      child: Container(
+                    child: Text(
+                      'Anime',
+                      style: TextStyle(color: Colors.black, fontSize: 15),
+                    ),
+                  ))
+                ]),
           ),
           Expanded(
-            child: TabBarView(
-              controller:tabController , 
-              children: [
-                ForYouPage(),
-                AnimePage()
-              ]
-            )
-          )
+              child: TabBarView(
+                  controller: tabController,
+                  children: [HalamanUtama(), HalamanListAnime()]))
         ],
       ),
     );
