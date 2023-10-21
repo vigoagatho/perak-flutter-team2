@@ -11,14 +11,14 @@ class ProfileCard extends StatelessWidget {
         children: [
           CircleAvatar(
             backgroundColor: Colors.redAccent,
-            backgroundImage: NetworkImage('https://i.imgur.com/5wXGjk8.jpeg'),
+            backgroundImage: ExactAssetImage('assets/images/logo.png'),
             radius: 40,
           ),
           SizedBox(width: 20,),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('mr_daijobu', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),),
+              Text('aninext', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),),
               SizedBox(height: 10,),
               Row(
               children: [

@@ -1,4 +1,4 @@
-import 'package:aninext/mainpage.dart';
+import 'package:aninext/pages/splashscreen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Poppins'
       ),
-      home: const MainPage(),
+      home: SplashScreen(),
       
     );
   }
