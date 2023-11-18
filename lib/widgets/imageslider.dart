@@ -14,7 +14,6 @@ class ImageSlider extends StatefulWidget {
 }
 
 class _ImageSliderState extends State<ImageSlider> {
-  late List<DataImageSlider> items;
   int _currentIndex = 0;
   final CarouselController _controller = CarouselController();
 
@@ -23,7 +22,7 @@ class _ImageSliderState extends State<ImageSlider> {
   @override
   void initState() {
     super.initState();
-    _dataImageSlider = ApiAnime().listOfDataImageSlider();
+    _dataImageSlider = fetchData();
   }
 
   @override
@@ -74,7 +73,7 @@ class _ImageSliderState extends State<ImageSlider> {
                   height: 200.0,
                   aspectRatio: 16 / 9,
                   viewportFraction: 1.0,
-                  initialPage: 0,
+                  initialPage: _currentIndex, // Set initial page to saved index
                   enableInfiniteScroll: true,
                   reverse: false,
                   autoPlay: false,
@@ -85,6 +84,9 @@ class _ImageSliderState extends State<ImageSlider> {
                   onPageChanged: (index, reason) {
                     setState(() {
                       _currentIndex = index;
+                      SharedPreferences.getInstance().then((prefs) {
+                        prefs.setInt('carouselIndex', index);
+                      });
                     });
                   },
                 ),
