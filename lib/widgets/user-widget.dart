@@ -1,3 +1,4 @@
+import 'package:aninext/pages/videoplayback.dart';
 import 'package:flutter/material.dart';
 import '../data/user-data.dart';
 
@@ -20,7 +21,9 @@ class UserWidget extends StatelessWidget {
           return Container(
             height: 280,
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => const VideoPlayback(),));
+              },
               child: Column(
                 children: [
                   Container(
