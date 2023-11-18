@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../data/api/api.dart';
 import '../widgets/user-widget.dart';
 
 class HalamanUtama extends StatefulWidget {
@@ -9,10 +10,11 @@ class HalamanUtama extends StatefulWidget {
 }
 
 class _HalamanUtamaState extends State<HalamanUtama> {
+  final baseUrl = ApiAnime();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: UserWidget(),
+      body: UserWidget(apiAnime: baseUrl),
     );
   }
 }

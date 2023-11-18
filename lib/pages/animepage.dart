@@ -1,3 +1,5 @@
+import 'package:aninext/common/url.dart';
+import 'package:aninext/data/api/api.dart';
 import 'package:flutter/material.dart';
 import '../widgets/rekomendasi.dart';
 import '../widgets/sedang-tren.dart';
@@ -9,6 +11,7 @@ class HalamanListAnime extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final baseUrl = ApiAnime();
     return Scaffold(
         body: ListView(
       shrinkWrap: true,
@@ -19,9 +22,9 @@ class HalamanListAnime extends StatelessWidget {
           child: Text('Lanjutkan Menonton',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
         ),
-        LanjutNonton(),
-        SedangTren(),
-        Rekomendasi(),
+        WatchProgress(apiAnime: baseUrl),
+        SedangTren(apiAnimeList: baseUrl),
+        Rekomendasi(apiAnimeList: baseUrl),
         SizedBox(height: 30)
       ],
     ));
