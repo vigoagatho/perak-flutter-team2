@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:aninext/data/api/api.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../data/model/userdata.dart';
 
@@ -9,15 +12,8 @@ class UserWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // UserData userData = UserData();
-    // var gambar = userData.image;
-    // var view = userData.view;
-    // var comment = userData.comment;
-    // var title = userData.title;
-    // var userProfile = userData.userProfile;
-    // var name = userData.name;
     return FutureBuilder<List<UserData>>(
-        future: apiAnime.listOfUserData(),
+        future: fetchData(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
@@ -118,5 +114,25 @@ class UserWidget extends StatelessWidget {
                 });
           }
         });
+  }
+
+  Future<List<UserData>> fetchData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    String? cachedData = prefs.getString('userDataData');
+
+    if (cachedData != null && cachedData.isNotEmpty) {
+      List<UserData> cachedList = userDataFromJson(cachedData);
+      return cachedList;
+    }
+
+    final response = await apiAnime.listOfUserData();
+
+    if (response.isNotEmpty) {
+      prefs.setString('userDataData', jsonEncode(response));
+      return response;
+    } else {
+      throw Exception('Failed to load data');
+    }
   }
 }

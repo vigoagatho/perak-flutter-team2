@@ -1,22 +1,21 @@
+import 'dart:convert';
+
 import 'package:aninext/data/api/api.dart';
-import 'package:aninext/data/model/anime-list.dart';
+import 'package:aninext/data/model/Recommend.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Rekomendasi extends StatelessWidget {
-  final ApiAnime apiAnimeList;
-  const Rekomendasi({Key? key, required this.apiAnimeList}) : super(key: key);
+  final ApiAnime apiAnime;
+  const Rekomendasi({Key? key, required this.apiAnime}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final lebarLayar = MediaQuery.of(context).size.width;
     final halfScreen = lebarLayar / 2;
     final tinggiDikit = ((lebarLayar / 3) * 4) / 5;
-
-    // AnimeList animeList = AnimeList();
-    // var gambar = animeList.gambarrekomen;
-    // var judul = animeList.judulrekomen;
-    return FutureBuilder<List<AnimeList>>(
-        future: apiAnimeList.listOfAnimeList(isTrend: 0),
+    return FutureBuilder<List<Recommend>>(
+        future: fetchData(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
@@ -75,5 +74,25 @@ class Rekomendasi extends StatelessWidget {
             );
           }
         });
+  }
+
+  Future<List<Recommend>> fetchData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    String? cachedData = prefs.getString('recommendData');
+
+    if (cachedData != null && cachedData.isNotEmpty) {
+      List<Recommend> cachedList = recommendFromJson(cachedData);
+      return cachedList;
+    }
+
+    final response = await apiAnime.listOfRecommend();
+
+    if (response.isNotEmpty) {
+      prefs.setString('recommendData', jsonEncode(response));
+      return response;
+    } else {
+      throw Exception('Failed to load data');
+    }
   }
 }

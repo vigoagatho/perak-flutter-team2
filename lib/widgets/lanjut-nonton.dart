@@ -1,7 +1,11 @@
+import 'dart:convert';
+
 import 'package:aninext/data/api/api.dart';
 import 'package:aninext/data/model/lanjutnonton.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui';
+
+import 'package:shared_preferences/shared_preferences.dart';
 
 class WatchProgress extends StatelessWidget {
   final ApiAnime apiAnime;
@@ -9,13 +13,8 @@ class WatchProgress extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // AnimeList animeList = AnimeList();
-    // var gambar = animeList.gambarlanjut;
-    // var judul = animeList.judullanjut;
-    // var episode = animeList.episode;
-    // var persen = animeList.persen;
     return FutureBuilder<List<LanjutNonton>>(
-        future: apiAnime.listOfLanjutNonton(),
+        future: fetchData(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
@@ -71,5 +70,25 @@ class WatchProgress extends StatelessWidget {
                 ));
           }
         });
+  }
+
+  Future<List<LanjutNonton>> fetchData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    String? cachedData = prefs.getString('lanjutnontonData');
+
+    if (cachedData != null && cachedData.isNotEmpty) {
+      List<LanjutNonton> cachedList = lanjutNontonFromJson(cachedData);
+      return cachedList;
+    }
+
+    final response = await apiAnime.listOfLanjutNonton();
+
+    if (response.isNotEmpty) {
+      prefs.setString('lanjutnontonData', jsonEncode(response));
+      return response;
+    } else {
+      throw Exception('Failed to load data');
+    }
   }
 }

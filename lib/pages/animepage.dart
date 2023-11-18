@@ -1,4 +1,3 @@
-import 'package:aninext/common/url.dart';
 import 'package:aninext/data/api/api.dart';
 import 'package:flutter/material.dart';
 import '../widgets/rekomendasi.dart';
@@ -23,8 +22,8 @@ class HalamanListAnime extends StatelessWidget {
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
         ),
         WatchProgress(apiAnime: baseUrl),
-        SedangTren(apiAnimeList: baseUrl),
-        Rekomendasi(apiAnimeList: baseUrl),
+        SedangTren(apiAnime: baseUrl),
+        Rekomendasi(apiAnime: baseUrl),
         SizedBox(height: 30)
       ],
     ));

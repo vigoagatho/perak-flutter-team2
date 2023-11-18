@@ -1,22 +1,21 @@
+import 'dart:convert';
+
+import 'package:aninext/data/model/tren.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../data/api/api.dart';
-import '../data/model/anime-list.dart';
 
 class SedangTren extends StatelessWidget {
-  final ApiAnime apiAnimeList;
-  const SedangTren({Key? key, required this.apiAnimeList}) : super(key: key);
+  final ApiAnime apiAnime;
+  const SedangTren({Key? key, required this.apiAnime}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final lebarLayar = MediaQuery.of(context).size.width;
     final halfScreen = lebarLayar / 2;
     final tinggiDikit = ((lebarLayar / 3) * 4) / 5;
-
-    // AnimeList animeList = AnimeList();
-    // var gambar = animeList.gambartren;
-    // var judul = animeList.judultren;
-    return FutureBuilder<List<AnimeList>>(
-        future: apiAnimeList.listOfAnimeList(isTrend: 1),
+    return FutureBuilder<List<Trend>>(
+        future: fetchData(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
@@ -75,5 +74,25 @@ class SedangTren extends StatelessWidget {
             );
           }
         });
+  }
+
+  Future<List<Trend>> fetchData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    String? cachedData = prefs.getString('trendData');
+
+    if (cachedData != null && cachedData.isNotEmpty) {
+      List<Trend> cachedList = trendFromJson(cachedData);
+      return cachedList;
+    }
+
+    final response = await apiAnime.listOfTrend();
+
+    if (response.isNotEmpty) {
+      prefs.setString('trendData', jsonEncode(response));
+      return response;
+    } else {
+      throw Exception('Failed to load data');
+    }
   }
 }
