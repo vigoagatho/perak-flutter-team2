@@ -2,6 +2,10 @@
 
 A new Flutter project.
 
+Server 
+```
+https://aninext.kencang.id/
+```
 ## Getting Started
 
 This project is a starting point for a Flutter application.
