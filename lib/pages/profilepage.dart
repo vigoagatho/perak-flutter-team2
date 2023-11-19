@@ -44,17 +44,6 @@ class ProfilePage extends StatelessWidget {
                 ),
               ),
               HistoryCard(apiAnime: baseUrl),
-              // const SingleChildScrollView(
-              //   scrollDirection: Axis.horizontal,
-              //   child: Row(
-              //     children: [
-              //       HistoryCard(imageUrl: 'https://images5.alphacoders.com/132/1325882.png', title: 'Spy X Family S1 E12'),
-              //       HistoryCard(imageUrl: 'https://i.pinimg.com/736x/86/71/99/8671992e3ac1984bf83d25d29074330d.jpg', title: 'Dragon Ball Kai E64'),
-              //       HistoryCard(imageUrl: 'https://images6.fanpop.com/image/photos/40600000/OPM-Wallpaper-one-punch-man-40613919-1680-1050.jpg', title: 'One Punch Man S1 E12'),
-              //       HistoryCard(imageUrl: 'https://m.media-amazon.com/images/I/71jt8+W2XHL.jpg', title: 'One Piece E1031'),
-              //     ],
-              //   ),
-              // ),
               const ListTile(
                 leading: Icon(
                   Icons.download_for_offline_outlined,
@@ -121,7 +110,6 @@ class ProfilePage extends StatelessWidget {
                     Icons.navigate_next,
                     color: Colors.black,
                   )),
-
               SizedBox(
                 height: 25,
               ),
