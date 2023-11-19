@@ -6,6 +6,26 @@ Server
 ```
 https://aninext.kencang.id/
 ```
+Daftar Endpoint
+```
+userdata
+dataimageslider
+lanjutnonton
+history
+trend
+recommend
+```
+Contoh api server
+```
+https://aninext.kencang.id/api/userdata
+```
+<hr>
+Backend
+
+```
+https://github.com/RezaPratika/perak-database
+```
+<hr>
 ## Getting Started
 
 This project is a starting point for a Flutter application.
