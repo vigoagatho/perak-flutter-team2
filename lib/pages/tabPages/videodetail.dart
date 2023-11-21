@@ -15,7 +15,7 @@ class _VideoDetailState extends State<VideoDetail> {
       body: ListView(
         children: [
           Padding(
-            padding: EdgeInsets.only(left : 8.0, top: 10),
+            padding: EdgeInsets.only(left : 8.0),
             child: Text('Kematian Gento Dunia Sang Gojo Satoru?!', 
             style: TextStyle(
               fontSize: 16,

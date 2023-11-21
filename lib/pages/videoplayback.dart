@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:aninext/pages/tabPages/comments.dart';
 import 'package:aninext/pages/tabPages/videodetail.dart';
 import 'package:flutter/material.dart';
@@ -32,15 +30,27 @@ class _VideoPlaybackState extends State<VideoPlayback>with TickerProviderStateMi
   Widget build(BuildContext context) {
     TabController tabController =TabController(length: 2, vsync: this);
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Youtube Test"),
-      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          YoutubePlayer(controller: _controller,
-          showVideoProgressIndicator: true,
-          onReady:()=> debugPrint('Ready'),
+          Container(
+            width: MediaQuery.of(context).size.width,
+            padding: EdgeInsets.all(17),
+          ),
+          Container(
+            child: Stack(
+              children:[ YoutubePlayer(controller: _controller,
+              showVideoProgressIndicator: true,
+              onReady:()=> debugPrint('Ready'),
+              ),
+              Align(
+                alignment: Alignment.topLeft,
+                child: IconButton(onPressed: (){
+                  Navigator.pop(context);
+                }, icon: Icon(Icons.arrow_back, color: Colors.white)),
+              )
+              ]
+            ),
           ),
           Container(
             child: TabBar(
