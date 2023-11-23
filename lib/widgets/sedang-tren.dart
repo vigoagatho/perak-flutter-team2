@@ -31,7 +31,7 @@ class SedangTren extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   child: Container(
                     margin: EdgeInsets.only(top: 24, left: 10, bottom: 10),
-                    child: Text("Rekomendasi",
+                    child: Text("Sedang Tren",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 20)),
                   ),
