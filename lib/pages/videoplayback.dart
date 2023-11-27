@@ -1,25 +1,23 @@
-import 'package:aninext/data/api/api.dart';
-import 'package:aninext/data/user-data.dart';
+import 'package:aninext/data/model/userdata.dart';
 import 'package:aninext/pages/tabPages/comments.dart';
 import 'package:aninext/pages/tabPages/videodetail.dart';
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class VideoPlayback extends StatefulWidget {
-  const VideoPlayback({Key? key}) : super(key: key);
+  final UserData userData;
+  const VideoPlayback({Key? key, required this.userData}) : super(key: key);
 
   @override
   State<VideoPlayback> createState() => _VideoPlaybackState();
 }
 
 class _VideoPlaybackState extends State<VideoPlayback>with TickerProviderStateMixin {
-  final videoURL = "https://www.youtube.com/watch?v=6BCyjUvurPk";
   late YoutubePlayerController _controller;
-  final baseUrl = UserData();
 
   @override
   void initState(){
-    final videoID = YoutubePlayer.convertUrlToId(videoURL);
+    final videoID = YoutubePlayer.convertUrlToId(widget.userData.video);
 
     _controller = YoutubePlayerController(
       initialVideoId: videoID!,
@@ -82,7 +80,7 @@ class _VideoPlaybackState extends State<VideoPlayback>with TickerProviderStateMi
           Expanded(
               child: TabBarView(
                   controller: tabController,
-                  children: [VideoDetail(userData: baseUrl,), Comments()]))
+                  children: [VideoDetail(userData: widget.userData,), Comments()]))
         ],
       ),
     );

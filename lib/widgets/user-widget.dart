@@ -29,7 +29,7 @@ class UserWidget extends StatelessWidget {
                     height: 280,
                     child: InkWell(
                       onTap: () {
-                       Navigator.of(context).push(MaterialPageRoute(builder: (context)=> VideoPlayback()));
+                       Navigator.of(context).push(MaterialPageRoute(builder: (context)=> VideoPlayback(userData: userData[0])));
                       },
                       child: Column(
                         children: [
