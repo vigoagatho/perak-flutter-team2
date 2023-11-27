@@ -30,57 +30,55 @@ class _VideoPlaybackState extends State<VideoPlayback>with TickerProviderStateMi
   Widget build(BuildContext context) {
     TabController tabController =TabController(length: 2, vsync: this);
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Container(
-            width: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.all(17),
-          ),
-          Container(
-            child: Stack(
-              children:[ YoutubePlayer(controller: _controller,
-              showVideoProgressIndicator: true,
-              onReady:()=> debugPrint('Ready'),
+      body: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Container(
+              child: Stack(
+                children:[ YoutubePlayer(controller: _controller,
+                showVideoProgressIndicator: true,
+                onReady:()=> debugPrint('Ready'),
+                ),
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: IconButton(onPressed: (){
+                    Navigator.pop(context);
+                  }, icon: Icon(Icons.arrow_back, color: Colors.white)),
+                )
+                ]
               ),
-              Align(
-                alignment: Alignment.topLeft,
-                child: IconButton(onPressed: (){
-                  Navigator.pop(context);
-                }, icon: Icon(Icons.arrow_back, color: Colors.white)),
-              )
-              ]
             ),
-          ),
-          Container(
-            child: TabBar(
-              controller: tabController,
-              isScrollable: true,
-              indicatorColor: Colors.blueGrey,
-              tabAlignment: TabAlignment.start,
-              tabs: [
-                Tab(
-                    child: Container(
-                      child: Text(
-                        'Info',
-                        style: TextStyle(color: Colors.black, fontSize: 15),
-                      ),
-                    ),
-                  ),
+            Container(
+              child: TabBar(
+                controller: tabController,
+                isScrollable: true,
+                indicatorColor: Colors.blueGrey,
+                tabAlignment: TabAlignment.start,
+                tabs: [
                   Tab(
                       child: Container(
-                    child: Text(
-                      'Komentar',
-                      style: TextStyle(color: Colors.black, fontSize: 15),
+                        child: Text(
+                          'Info',
+                          style: TextStyle(color: Colors.black, fontSize: 15),
+                        ),
+                      ),
                     ),
-                  ))
-              ]),
-          ),
-          Expanded(
-              child: TabBarView(
-                  controller: tabController,
-                  children: [VideoDetail(), Comments()]))
-        ],
+                    Tab(
+                        child: Container(
+                      child: Text(
+                        'Komentar',
+                        style: TextStyle(color: Colors.black, fontSize: 15),
+                      ),
+                    ))
+                ]),
+            ),
+            Expanded(
+                child: TabBarView(
+                    controller: tabController,
+                    children: [VideoDetail(), Comments()]))
+          ],
+        ),
       ),
     );
   }
