@@ -1,3 +1,4 @@
+import 'package:aninext/data/api/api.dart';
 import 'package:aninext/widgets/videorecomendation.dart';
 import 'package:flutter/material.dart';
 
@@ -9,6 +10,7 @@ class VideoDetail extends StatefulWidget {
 }
 
 class _VideoDetailState extends State<VideoDetail> {
+  final baseUrl = ApiAnime();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,7 +59,7 @@ class _VideoDetailState extends State<VideoDetail> {
             padding: EdgeInsets.all(8),
             child: Text('Direkomendasikan Untukmu', style: TextStyle(fontWeight: FontWeight.w600),),
             ),
-          VideoRecomendation()
+          VideoRecomendation(apiAnime: baseUrl,)
         ],
       )
     );

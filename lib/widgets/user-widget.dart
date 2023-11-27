@@ -1,10 +1,8 @@
 import 'package:aninext/pages/videoplayback.dart';
 import 'dart:convert';
-
 import 'package:aninext/data/api/api.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../data/model/userdata.dart';
 
 class UserWidget extends StatelessWidget {
