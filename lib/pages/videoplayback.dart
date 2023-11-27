@@ -1,3 +1,5 @@
+import 'package:aninext/data/api/api.dart';
+import 'package:aninext/data/user-data.dart';
 import 'package:aninext/pages/tabPages/comments.dart';
 import 'package:aninext/pages/tabPages/videodetail.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +15,7 @@ class VideoPlayback extends StatefulWidget {
 class _VideoPlaybackState extends State<VideoPlayback>with TickerProviderStateMixin {
   final videoURL = "https://www.youtube.com/watch?v=6BCyjUvurPk";
   late YoutubePlayerController _controller;
+  final baseUrl = UserData();
 
   @override
   void initState(){
@@ -79,7 +82,7 @@ class _VideoPlaybackState extends State<VideoPlayback>with TickerProviderStateMi
           Expanded(
               child: TabBarView(
                   controller: tabController,
-                  children: [VideoDetail(), Comments()]))
+                  children: [VideoDetail(userData: baseUrl,), Comments()]))
         ],
       ),
     );

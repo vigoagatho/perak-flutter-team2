@@ -1,9 +1,11 @@
 import 'package:aninext/data/api/api.dart';
+import 'package:aninext/data/model/userdata.dart';
 import 'package:aninext/widgets/videorecomendation.dart';
 import 'package:flutter/material.dart';
 
 class VideoDetail extends StatefulWidget {
-  const VideoDetail({super.key});
+  final UserData userData;
+  const VideoDetail({super.key, required this.userData });
 
   @override
   State<VideoDetail> createState() => _VideoDetailState();
